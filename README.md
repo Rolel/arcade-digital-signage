@@ -9,10 +9,14 @@ Documentation
 Composer:
 
 For SF:
-* php 7.1
 * php-xml
 * php-curl
 * php-zip
+* php-mbstring
+* php-mysql
+
+Mysql 5.7
+PHP 7.1+
 
 ## Procedure
 ## Configuration reference
