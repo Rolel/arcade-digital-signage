@@ -29,3 +29,38 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    admin.screen:
+        class: App\Admin\ScreenAdmin
+        arguments: [~, App\Entity\Screen, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: signage, label: Screen }
+        public: true
+
+    admin.deck:
+        class: App\Admin\DeckAdmin
+        arguments: [~, App\Entity\Deck, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: signage, label: Deck }
+        public: true
+
+    admin.slide:
+        class: App\Admin\SlideAdmin
+        arguments: [~, App\Entity\Slide, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: signage, label: Slide }
+        public: true
+
+    admin.deck_has_slide:
+        class: App\Admin\DeckHasSlideAdmin
+        arguments: [~, App\Entity\DeckHasSlide, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: signage, label: DeckHasSlide, show_in_dashboard: false }
+        public: true
+
+    admin.screen_has_deck:
+        class: App\Admin\ScreenHasDeckAdmin
+        arguments: [~, App\Entity\ScreenHasDeck, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: signage, label: ScreenHasDeck, show_in_dashboard: false }
+        public: true
