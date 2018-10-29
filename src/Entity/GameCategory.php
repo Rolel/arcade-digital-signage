@@ -24,13 +24,18 @@ class GameCategory
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="category")
      */
     private $games;
 
     public function __construct()
     {
         $this->games = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->getName();
     }
 
     public function getId(): ?int

@@ -64,3 +64,38 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: signage, label: ScreenHasDeck, show_in_dashboard: false }
         public: true
+
+    admin.game:
+        class: App\Admin\GameAdmin
+        arguments: [~, App\Entity\Game, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: gaming, label: Game }
+        public: true
+
+    admin.game_category:
+        class: App\Admin\GameCategoryAdmin
+        arguments: [~, App\Entity\GameCategory, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: gaming, label: GameCategory }
+        public: true
+
+    admin.brand:
+        class: App\Admin\BrandAdmin
+        arguments: [~, App\Entity\Brand, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: gaming, label: Brand }
+        public: true
+
+    admin.score:
+        class: App\Admin\ScoreAdmin
+        arguments: [~, App\Entity\Score, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: gaming, label: Score }
+        public: true
+
+    admin.scoreboard:
+        class: App\Admin\ScoreboardAdmin
+        arguments: [~, App\Entity\Scoreboard, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: gaming, label: Scoreboard }
+        public: true

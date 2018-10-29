@@ -24,12 +24,12 @@ class Game
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Brand", inversedBy="games")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Brand", inversedBy="games")
      */
     private $brand;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\GameCategory", inversedBy="games")
+     * @ORM\ManyToOne(targetEntity="App\Entity\GameCategory", inversedBy="games")
      */
     private $category;
 
@@ -65,7 +65,7 @@ class Game
     /**
      * @return Collection|Brand[]
      */
-    public function getBrand(): Collection
+    public function getBrand(): ?Brand
     {
         return $this->brand;
     }
@@ -89,9 +89,9 @@ class Game
     }
 
     /**
-     * @return Collection|GameCategory[]
+     * @return GameCategory
      */
-    public function getCategory(): Collection
+    public function getCategory(): ?GameCategory
     {
         return $this->category;
     }
@@ -141,6 +141,20 @@ class Game
                 $scoreboard->setGame(null);
             }
         }
+
+        return $this;
+    }
+
+    public function setBrand(?Brand $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function setCategory(?GameCategory $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
