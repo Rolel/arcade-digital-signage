@@ -40,14 +40,12 @@ class Game
 
     public function __construct()
     {
-        $this->brand = new ArrayCollection();
-        $this->category = new ArrayCollection();
         $this->scoreboard = new ArrayCollection();
     }
 
     public function __toString(): ?string
     {
-        return $this->getName();
+        return $this->getName() ?? '';
     }
 
     public function getId(): ?int
