@@ -70,12 +70,16 @@ class Scoreboard
         $this->scores = new ArrayCollection();
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-        $type = self::TYPES[$this->getType()];
-        $game = $this->getGame()->getName();
+        $output = '';
+        if ($this->getType() != null && $this->getGame() != null) {
+            $type = self::TYPES[$this->getType()];
+            $game = $this->getGame()->getName();
 
-        return $this->getName() . ' on ' . $game . ' - ' . $type;
+            $output = $this->getName() . ' on ' . $game . ' - ' . $type;
+        }
+        return $output;
     }
 
     public function getId(): ?int
