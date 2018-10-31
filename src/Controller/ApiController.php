@@ -10,9 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApiController extends AbstractController
 {
     /**
-     * @Route("/api", name="api")
+     * @Route("/api/screen/{screenId}", name="api_screen")
      */
-    public function index(Request $request, EntityManagerInterface $em)
+    public function index(Request $request, EntityManagerInterface $em, int $screenId)
     {
         $outputStructure = [
             'screen' => [],
@@ -20,7 +20,7 @@ class ApiController extends AbstractController
             'slide' => [],
         ];
 
-        $screen = $em->getRepository('App:Screen')->fetchFullTree(1);
+        $screen = $em->getRepository('App:Screen')->fetchFullTree($screenId);
         $outputStructure['screen'] = [
             'id' => $screen->getId(),
             'name' => $screen->getName(),
