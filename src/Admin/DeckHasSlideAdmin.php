@@ -40,12 +40,12 @@ final class DeckHasSlideAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-           // ->add('slide', ModelListType::class, ['required' => false])
+            ->add('enable', null, ['required' => false])
+            ->add('duration', null, ['required' => false])
             ->add('slide', ModelType::class, [
                 'required' => false,
                 'btn_add' => 'Create a new slide',
             ])
-            ->add('enable', null, ['required' => false])
             ->add('position', HiddenType::class)
             ;
     }

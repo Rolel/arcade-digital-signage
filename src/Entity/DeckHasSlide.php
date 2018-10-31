@@ -38,6 +38,11 @@ class DeckHasSlide
      */
     private $enable;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $duration;
+
     public function __toString(): string
     {
         return $this->getDeck()->getName()
@@ -96,6 +101,18 @@ class DeckHasSlide
     public function setEnable(bool $enabled): self
     {
         $this->enable = $enabled;
+
+        return $this;
+    }
+
+    public function getDuration(): ?int
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(int $duration): self
+    {
+        $this->duration = $duration;
 
         return $this;
     }
