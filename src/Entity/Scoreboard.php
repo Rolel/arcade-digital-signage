@@ -11,6 +11,26 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Scoreboard
 {
+    const TYPES = [
+        10 => 'Time (Min & Sec)',
+        11 => 'Time (Sec)',
+
+        20 => 'Score (Pts)',
+        21 => 'Score (Money $)',
+        22 => 'Score (Money €)'
+    ];
+
+    const TYPES_UNIT = [
+        10 => ['m','s'],
+        11 => 's',
+
+        20 => 'pts',
+        21 => 'USD',
+        22 => 'EUR'
+    ];
+
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -34,7 +54,8 @@ class Scoreboard
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Score", mappedBy="scoreboard")
+     * @ORM\OneToMany(targetEntity="App\Entity\Score", mappedBy="scoreboard", cascade={"persist"})
+     * @ORM\OrderBy({"value"="DESC"})
      */
     private $scores;
 
@@ -47,6 +68,14 @@ class Scoreboard
     public function __construct()
     {
         $this->scores = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        $type = self::TYPES[$this->getType()];
+        $game = $this->getGame()->getName();
+
+        return $this->getName() . ' on ' . $game . ' - ' . $type;
     }
 
     public function getId(): ?int
