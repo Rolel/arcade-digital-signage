@@ -19,6 +19,44 @@ class ScreenRepository extends ServiceEntityRepository
         parent::__construct($registry, Screen::class);
     }
 
+
+    /**
+     * @param $value
+     * @return Screen|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function fetchFullTree($value): ?Screen
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->addSelect('d')
+            ->addSelect('shd')
+            ->addSelect('dhs')
+            ->addSelect('sl')
+        ;
+
+        $qb->leftJoin('s.screenHasDecks', 'shd')
+            ->leftJoin('shd.deck', 'd')
+            ->leftJoin('d.deckHasSlides', 'dhs')
+            ->leftJoin('dhs.slide', 'sl')
+        ;
+
+        $qb->andWhere('s.id = :screenId')
+            ->andWhere('shd.enable = true')
+            ->andWhere('dhs.enable = true')
+        ;
+
+        $qb->addOrderBy('shd.position', 'ASC')
+            ->addOrderBy('dhs.position', 'ASC')
+        ;
+
+        return $qb->setParameter('screenId', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+
+
 //    /**
 //     * @return Screen[] Returns an array of Screen objects
 //     */

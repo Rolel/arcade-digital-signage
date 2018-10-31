@@ -20,8 +20,7 @@ class ApiController extends AbstractController
             'slide' => [],
         ];
 
-        // TODO: use custom method in repo to reduce SQL requests
-        $screen = $em->getRepository('App:Screen')->find(1);
+        $screen = $em->getRepository('App:Screen')->fetchFullTree(1);
         $outputStructure['screen'] = [
             'id' => $screen->getId(),
             'name' => $screen->getName(),
@@ -29,9 +28,6 @@ class ApiController extends AbstractController
         ];
 
         foreach ($screen->getScreenHasDecks() as $hasDeck) {
-            if ($hasDeck->getEnable() == false)
-                continue;
-
             $deck = $hasDeck->getDeck();
             $outputStructure['deck'][] = [
                 'id' => $deck->getId(),
@@ -40,9 +36,6 @@ class ApiController extends AbstractController
             ];
 
             foreach($deck->getDeckHasSlides() as $hasSlide) {
-                if ($hasSlide->getEnable() == false)
-                    continue;
-
                 $slide = $hasSlide->getSlide();
                 $outputStructure['slide'][] = [
                     'id' => $slide->getId(),
@@ -54,10 +47,5 @@ class ApiController extends AbstractController
         }
 
         return $this->json($outputStructure);
-
-        dump($outputStructure);
-        return $this->render('api/index.html.twig', [
-            'controller_name' => 'ApiController',
-        ]);
     }
 }
