@@ -34,7 +34,7 @@ class Brand
     private $logo;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Game", mappedBy="brand")
+     * @ORM\OneToMany(targetEntity="App\Entity\Game", mappedBy="brand")
      */
     private $games;
 
