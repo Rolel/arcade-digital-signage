@@ -1,0 +1,28 @@
+<section
+        data-autoslide="{{ hasSlide.duration * 100 }}"
+        data-state="slide-{{ slide.type }}"
+        data-slideid="{{ slide.id }}"
+>
+    {% if slide.showtitle %}
+        <h1>{{ slide.name }}</h1>
+        <h2>{{ slide.top.game.name }} - {{ slide.top.game.brand.name }}</h2>
+    {% endif %}
+    <table class="topscore">
+        <thead>
+            <th>
+                <td>Date</td>
+                <td>Name</td>
+                <td>Score</td>
+            </th>
+        </thead>
+        <tbody>
+        {% for score in slide.top.scores %}
+            <tr>
+                <td>{{ score.date|date("d/m/Y") }}</td>
+                <td>{{ score.playername }}</td>
+                <td>{{ score.value }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>

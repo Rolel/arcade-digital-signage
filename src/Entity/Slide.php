@@ -56,6 +56,16 @@ class Slide
      */
     private $autoscroll;
 
+    /**
+     * @ORM\Column(type="string", length=8)
+     */
+    private $direction;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\GameCategory")
+     */
+    private $gametype;
+
     public function __toString(): string
     {
         return $this->name ?? '';
@@ -158,6 +168,30 @@ class Slide
     public function setAutoscroll(bool $autoscroll): self
     {
         $this->autoscroll = $autoscroll;
+
+        return $this;
+    }
+
+    public function getDirection(): ?string
+    {
+        return $this->direction;
+    }
+
+    public function setDirection(string $direction): self
+    {
+        $this->direction = $direction;
+
+        return $this;
+    }
+
+    public function getGametype(): ?GameCategory
+    {
+        return $this->gametype;
+    }
+
+    public function setGametype(?GameCategory $gametype): self
+    {
+        $this->gametype = $gametype;
 
         return $this;
     }

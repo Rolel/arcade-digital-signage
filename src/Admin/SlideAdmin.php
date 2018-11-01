@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 final class SlideAdmin extends AbstractAdmin
@@ -42,11 +43,13 @@ final class SlideAdmin extends AbstractAdmin
             ->add('type', ChoiceFieldMaskType::class, [
                 'choices' => [
                     'Top X' => 'top',
+                    'Top X By type' => 'topbytype',
                     'Content' => 'content',
                     'Video' => 'video',
                 ],
                 'map' => [
-                    'top' => ['autoscroll', 'count', 'scoreboard'],
+                    'top' => ['autoscroll', 'count', 'direction', 'scoreboard'],
+                    'topbytype' => ['autoscroll', 'count', 'direction', 'gametype'],
                     'content' => ['autoscroll', 'content'],
                     'video' => ['video'],
                 ],
@@ -58,11 +61,23 @@ final class SlideAdmin extends AbstractAdmin
             ->add('name')
             ->add('showtitle')
             ->add('count')
+            ->add('direction', ChoiceType::class, [
+                'choices'  => [
+                    'Biggest first (desc)' => 'DESC',
+                    'Smallest first (asc)' => 'ASC',
+                ],
+                'expanded' => true,
+                'multiple' => false,
+            ])
             ->add('autoscroll')
             ->add('content')
             ->add('scoreboard', ModelType::class, [
                 'required' => false,
-                'btn_add' => 'Create a new slide',
+                'btn_add' => false,
+            ])
+            ->add('gametype', ModelType::class, [
+                'required' => false,
+                'btn_add' => false,
             ])
             ->add('video', TextType::class, ['required' => false])
             ;

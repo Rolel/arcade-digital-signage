@@ -19,32 +19,35 @@ class ScoreboardRepository extends ServiceEntityRepository
         parent::__construct($registry, Scoreboard::class);
     }
 
-//    /**
-//     * @return Scoreboard[] Returns an array of Scoreboard objects
-//     */
-    /*
-    public function findByExampleField($value)
+    public function getByGameType($gameTypeId)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $qb = $this->createQueryBuilder('sb')
+            ->innerJoin('sb.game', 'g')
+            ->andWhere('g.category = :gameTypeId')
+            ->setParameter('gameTypeId', $gameTypeId);
 
-    /*
-    public function findOneBySomeField($value): ?Scoreboard
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $qb->getQuery()->getResult();
     }
-    */
+
+    public function getTop($scoreBoardId, $number = 10, $field = 'value', $direction = 'DESC')
+    {
+        $qb = $this->createQueryBuilder('sb')
+            ->addSelect('s')
+            ->addSelect('g')
+            ->addSelect('b')
+        ;
+
+        $qb->leftJoin('sb.scores', 's')
+            ->leftJoin('sb.game', 'g')
+            ->leftJoin('g.brand', 'b')
+        ;
+
+        $qb->andWhere('sb.id = :scoreBoardId');
+
+        $qb->setParameter('scoreBoardId', $scoreBoardId)
+            ->orderBy('s.'.$field, $direction)
+            ->setMaxResults($number);
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }
