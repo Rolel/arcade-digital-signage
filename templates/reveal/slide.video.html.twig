@@ -1,0 +1,11 @@
+<section
+    data-autoslide="{{ hasSlide.duration * 100 }}"
+    data-state="slide-{{ slide.type }}"
+    data-slideid="{{ slide.id }}"
+    data-video="{{ slide.video }}"
+    >
+    {% if slide.showtitle %}
+    <h1>{{ slide.name }}</h1>
+    {% endif %}
+    <div class="video-player stretch"></div>
+</section>

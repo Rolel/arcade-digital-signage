@@ -8,10 +8,7 @@
             {% for hasDeck in screen.screenHasDecks %}
                 {% for hasSlide in hasDeck.deck.deckHasSlides %}
                     {% set slide = hasSlide.slide %}
-                    <section data-autoslide="{{ hasSlide.duration * 1000 }}">
-                        {{ slide.name }}
-
-                    </section>
+                    {% include 'reveal/slide.' ~ slide.type ~ '.html.twig' %}
                 {% endfor %}
             {% endfor %}
         </div>

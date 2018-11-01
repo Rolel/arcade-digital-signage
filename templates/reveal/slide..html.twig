@@ -1,0 +1,11 @@
+<section
+        data-autoslide="{{ hasSlide.duration * 100 }}"
+        data-slideid="{{ slide.id }}"
+>
+    <h1>ID: {{ slide.id }}</h1>
+    {% if slide.name %}
+        <h2>{{ slide.name }}</h2>
+    {% endif %}
+    Something is misconfigured <br />
+    Please select the type of your slide in the admin !
+</section>
