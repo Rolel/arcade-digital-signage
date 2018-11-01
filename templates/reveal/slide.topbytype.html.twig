@@ -11,11 +11,11 @@
         <h2>{{ scoreboard.game.name }} - {{ scoreboard.game.brand.name }}</h2>
         <table class="topscore">
             <thead>
-                <th>
-                    <td>Date</td>
-                    <td>Name</td>
-                    <td>Score</td>
-                </th>
+                <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
             </thead>
             <tbody>
                 {% for score in scoreboard.scores %}
