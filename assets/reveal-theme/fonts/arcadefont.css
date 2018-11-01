@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Arcade Normal';
+    src: url('ArcadeNormal.woff2') format('woff2'),
+    url('ArcadeNormal.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Arcade Interlaced';
+    src: url('ArcadeInterlaced.woff2') format('woff2'),
+    url('ArcadeInterlaced.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

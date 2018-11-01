@@ -1,6 +1,6 @@
-require('../css/app.css');
+// require('../css/app.css');
 require('reveal.js/css/reveal.scss');
-require('reveal.js/css/theme/black.css');
+require('../reveal-theme/arcade.scss');
 
 import Reveal from 'reveal.js';
 import YouTubePlayer from 'youtube-player';
@@ -15,8 +15,7 @@ Reveal.initialize({
     autoSlideStoppable: true,
     width: 1920,
     height: 1080,
-    // default/cube/page/concave/zoom/linear/fade/none
-    // transition: 'concave',
+    transition: 'convex',
 });
 
 Reveal.addEventListener( 'ready', function( event ) {
