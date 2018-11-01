@@ -1,8 +1,8 @@
 require('../css/app.css');
-require('reveal/index.css');
-require('reveal/theme/default.css');
+require('reveal.js/css/reveal.scss');
+require('reveal.js/css/theme/black.css');
 
-import Reveal from 'reveal';
+import Reveal from 'reveal.js';
 import YouTubePlayer from 'youtube-player';
 
 
@@ -16,7 +16,7 @@ Reveal.initialize({
     width: 1920,
     height: 1080,
     // default/cube/page/concave/zoom/linear/fade/none
-    transition: 'concave',
+    // transition: 'concave',
 });
 
 Reveal.addEventListener( 'ready', function( event ) {
@@ -24,7 +24,6 @@ Reveal.addEventListener( 'ready', function( event ) {
 } );
 Reveal.addEventListener( 'slidechanged', function( event ) {
     // event.previousSlide, event.currentSlide, event.indexh, event.indexv
-    console.log('changed slide')
     videoSlide(event.currentSlide);
 } );
 
