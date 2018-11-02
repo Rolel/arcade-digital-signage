@@ -9,20 +9,24 @@
 
     {% for scoreboard in slide.top %}
         <h2>{{ scoreboard.game.name }} - {{ scoreboard.game.brand.name }}</h2>
-        <table class="topscore">
+        <table class="scoreboard">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Name</th>
-                    <th>Score</th>
+                    <th class="rank">Rank</th>
+                    <th class="date">Date</th>
+                    <th class="name">Name</th>
+                    <th class="score">Score</th>
                 </tr>
             </thead>
             <tbody>
+                {%  set counter = 0 %}
                 {% for score in scoreboard.scores %}
+                    {% set counter = counter + 1 %}
                     <tr>
-                        <td>{{ score.date|date("d/m/Y") }}</td>
-                        <td>{{ score.playername }}</td>
-                        <td>{{ score.value }}</td>
+                        <td class="rank">{{ counter|localizednumber('ordinal') }}</td>
+                        <td class="date">{{ score.date|date("d/m/Y") }}</td>
+                        <td class="name">{{ score.playername }}</td>
+                        <td class="score">{{ score.value }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
