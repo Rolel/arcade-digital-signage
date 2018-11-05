@@ -22,31 +22,35 @@ class RevealController extends AbstractController
             foreach($deck->getDeckHasSlides() as $hasSlide) {
                 $slide = $hasSlide->getSlide();
 
-
                 if ($scoreboard = $slide->getScoreboard()) {
-                    $slide->top = $em->getRepository('App:Scoreboard')->getTop(
+                    $top = $em->getRepository('App:Score')->getTop(
                         $scoreboard->getId(),
                         $slide->getCount(),
                         'value',
                         $slide->getDirection()
                     );
+                    $slide->top = [
+                        'scoreboard' => $scoreboard,
+                        'scores' => $top
+                    ];
                 }
 
                 if ($gametype = $slide->getGametype()) {
                     $scoreboards = $em->getRepository('App:Scoreboard')->getByGameType($gametype);
 
                     foreach ($scoreboards as $scoreboard) {
-                        $slide->top[] = $em->getRepository('App:Scoreboard')->getTop(
+                        $top = $em->getRepository('App:Score')->getTop(
                             $scoreboard->getId(),
                             $slide->getCount(),
                             'value',
                             $slide->getDirection()
                         );
+                        $slide->top[] = [
+                            'scoreboard' => $scoreboard,
+                            'scores' => $top
+                        ];
                     }
                 }
-
-
-
             }
         }
 

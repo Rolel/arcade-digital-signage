@@ -19,6 +19,30 @@ class ScoreRepository extends ServiceEntityRepository
         parent::__construct($registry, Score::class);
     }
 
+    public function getTop($scoreBoardId, $number = 10, $field = 'value', $direction = 'DESC')
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->addSelect('sb')
+            ->addSelect('g')
+            ->addSelect('b')
+        ;
+
+        $qb->innerJoin('s.scoreboard', 'sb')
+            ->leftJoin('sb.game', 'g')
+            ->leftJoin('g.brand', 'b')
+        ;
+
+        $qb->andWhere('sb.id = :scoreBoardId');
+
+        $qb->setParameter('scoreBoardId', $scoreBoardId)
+            ->orderBy('s.'.$field, $direction)
+        ;
+
+        return $qb->getQuery()
+            ->setMaxResults($number)
+            ->getResult();
+    }
+
 //    /**
 //     * @return Score[] Returns an array of Score objects
 //     */

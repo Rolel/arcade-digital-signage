@@ -24,7 +24,8 @@ class ScoreboardRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('sb')
             ->innerJoin('sb.game', 'g')
             ->andWhere('g.category = :gameTypeId')
-            ->setParameter('gameTypeId', $gameTypeId);
+            ->setParameter('gameTypeId', $gameTypeId)
+        ;
 
         return $qb->getQuery()->getResult();
     }
@@ -37,7 +38,7 @@ class ScoreboardRepository extends ServiceEntityRepository
             ->addSelect('b')
         ;
 
-        $qb->leftJoin('sb.scores', 's')
+        $qb->innerJoin('s.scores', 's')
             ->leftJoin('sb.game', 'g')
             ->leftJoin('g.brand', 'b')
         ;
@@ -46,8 +47,10 @@ class ScoreboardRepository extends ServiceEntityRepository
 
         $qb->setParameter('scoreBoardId', $scoreBoardId)
             ->orderBy('s.'.$field, $direction)
-            ->setMaxResults($number);
+        ;
 
-        return $qb->getQuery()->getOneOrNullResult();
+        return $qb->getQuery()
+            ->setMaxResults($number)
+            ->getOneOrNullResult();
     }
 }

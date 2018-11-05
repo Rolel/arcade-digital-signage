@@ -7,8 +7,8 @@
         <h1>{{ slide.name }}</h1>
     {% endif %}
 
-    {% for scoreboard in slide.top %}
-        <h2>{{ scoreboard.game.name }} - {{ scoreboard.game.brand.name }}</h2>
+    {% for top in slide.top %}
+        <h2>{{ top.scoreboard.game.name }} - {{ top.scoreboard.game.brand.name }}</h2>
         <table class="scoreboard">
             <thead>
                 <tr>
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 {%  set counter = 0 %}
-                {% for score in scoreboard.scores %}
+                {% for score in top.scores %}
                     {% set counter = counter + 1 %}
                     <tr>
                         <td class="rank">{{ counter|localizednumber('ordinal') }}</td>
