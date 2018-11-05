@@ -12,7 +12,7 @@ Reveal.initialize({
     history: true,
     center: true,
     loop: true,
-    autoSlideStoppable: true,
+    autoSlideStoppable: false,
     width: 1920,
     height: 1080,
     transition: 'convex',
