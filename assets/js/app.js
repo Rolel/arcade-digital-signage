@@ -1,6 +1,6 @@
-// require('../css/app.css');
 require('reveal.js/css/reveal.scss');
 require('../reveal-theme/arcade.scss');
+require('../css/app.scss');
 
 import Reveal from 'reveal.js';
 import YouTubePlayer from 'youtube-player';

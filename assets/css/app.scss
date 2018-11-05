@@ -1,0 +1,38 @@
+.reveal table {
+    margin-bottom: 50px;
+}
+.reveal table th,
+.reveal table td {
+    border-bottom: 2px solid;
+}
+
+/*
+.reveal h1, .reveal h2, .reveal h3 {
+    color: yellow;
+}
+.scoreboard thead {
+    color: red;
+}
+.scoreboard tr {
+}
+*/
+
+@mixin scoreboard($colortop: white, $colormiddle: white, $colorbottom: white) {
+    .reveal h1, .reveal h2, .reveal h3 {
+        color: $colortop;
+    }
+    .scoreboard thead tr {
+        color: $colormiddle;
+    }
+    .scoreboard tbody tr {
+        color: $colorbottom;
+    }
+}
+
+// Appel de la mixin
+.scoreboard-A {
+  @include scoreboard(limegreen, orange, white);
+}
+.scoreboard-B {
+  @include scoreboard(yellow, red, white);
+}
