@@ -38,6 +38,7 @@ class RevealController extends AbstractController
                 if ($gametype = $slide->getGametype()) {
                     $scoreboards = $em->getRepository('App:Scoreboard')->getByGameType($gametype);
 
+                    $slide->top = [];
                     foreach ($scoreboards as $scoreboard) {
                         $top = $em->getRepository('App:Score')->getTop(
                             $scoreboard->getId(),
