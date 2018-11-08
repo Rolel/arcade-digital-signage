@@ -44,7 +44,6 @@ final class ScoreboardAdmin extends AbstractAdmin
                     'delete' => [],
                 ],
             ])
-            ->add('id')
         ;
     }
 
