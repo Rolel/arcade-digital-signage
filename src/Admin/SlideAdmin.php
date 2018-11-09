@@ -43,28 +43,49 @@ final class SlideAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper)
     {
+
+        // define group zoning
         $formMapper
+            ->with('Type', ['class' => 'col-md-12'])->end()
+            ->with('Infos', ['class' => 'col-md-6'])->end()
+            ->with('Style', ['class' => 'col-md-6'])->end()
+            ->with('Slide', ['class' => 'col-md-12'])->end()
+        ;
+
+        $formMapper
+            ->with('Type')
             ->add('type', ChoiceFieldMaskType::class, [
                 'choices' => array_flip(Slide::TYPES),
                 'map' => [
-                    'top' => ['autoscroll', 'count', 'direction', 'scoreboard'],
-                    'topbytype' => ['autoscroll', 'count', 'direction', 'gametype'],
+                    'top' => ['Top', 'autoscroll', 'count', 'direction', 'scoreboard'],
+                    'topbytype' => ['Top', 'autoscroll', 'count', 'direction', 'gametype'],
                     'content' => ['autoscroll', 'content'],
-                    'video' => ['video'],
+                    'video' => ['Video', 'video'],
                 ],
                 'placeholder' => 'Choose an option',
                 'required' => true
-            ]);
+            ])
+            ->end();
 
         $formMapper
+            ->with('Infos')
             ->add('name')
             ->add('showtitle')
+            ->add('autoscroll')
+            ->end();
+
+        $formMapper
+            ->with('Style')
             ->add('glow')
             ->add('style', ChoiceType::class, [
                 'choices'  => array_flip(Slide::STYLES),
                 'expanded' => true,
                 'multiple' => false,
             ])
+            ->end();
+
+        $formMapper
+            ->with('Slide')
             ->add('count')
             ->add('direction', ChoiceType::class, [
                 'choices'  => [
@@ -74,7 +95,6 @@ final class SlideAdmin extends AbstractAdmin
                 'expanded' => true,
                 'multiple' => false,
             ])
-            ->add('autoscroll')
             ->add('content')
             ->add('scoreboard', ModelType::class, [
                 'required' => false,
@@ -85,7 +105,7 @@ final class SlideAdmin extends AbstractAdmin
                 'btn_add' => false,
             ])
             ->add('video', TextType::class, ['required' => false])
-            ;
+            ->end();
     }
 
     protected function configureShowFields(ShowMapper $showMapper)
