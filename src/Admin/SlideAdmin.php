@@ -26,7 +26,6 @@ final class SlideAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
             ->addIdentifier('name')
             ->add('type', 'choice', ['editable' => true, 'choices'  => Slide::TYPES])
             ->add('glow', 'boolean', ['editable' => true,

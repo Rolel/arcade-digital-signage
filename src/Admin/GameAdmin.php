@@ -24,7 +24,6 @@ final class GameAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-			->add('id')
 			->add('name')
 			->add('_action', null, [
                 'actions' => [

@@ -25,7 +25,6 @@ final class ScreenHasDeckAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-			->add('id')
 			->add('position')
 			->add('enable')
 			->add('_action', null, [
