@@ -1,3 +1,45 @@
+$colorDarkOrange: #FF4500;
+$colorOrange: #FF8C00;
+
+@mixin scoreboard($className, $fontFamily: 'Arcade Interlaced', $fontSize: inherit, $colorTop: white, $colorMiddle: white, $colorBottom: white) {
+    .reveal {
+        font-family: $fontFamily !important;
+        font-size: $fontSize !important;
+
+        .scoreboard-#{$className} h1,
+        .scoreboard-#{$className} h2,
+        .scoreboard-#{$className} h3 {
+            font-family: $fontFamily;
+            color: $colorTop;
+        }
+        .scoreboard-#{$className} thead tr {
+           color: $colorMiddle;
+        }
+        .scoreboard-#{$className} tbody tr {
+            color: $colorBottom;
+        }
+        .scoreboard-#{$className}.glow h1,
+        .scoreboard-#{$className}.glow h2,
+        .scoreboard-#{$className}.glow h3 {
+            animation: crt-output 10ms infinite;
+            text-shadow: 0.1rem 0.2rem 1rem lighten($colorTop, 10%);
+        }
+        .scoreboard-#{$className}.glow .scoreboard thead tr {
+            animation: crt-output 10ms infinite;
+            text-shadow: 0.1rem 0.2rem 1rem lighten($colorMiddle, 10%);
+        }
+        .scoreboard-#{$className}.glow .scoreboard tbody tr {
+            animation: crt-output 10ms infinite;
+            text-shadow: 0.1rem 0.2rem 1rem lighten($colorBottom, 10%);
+        }
+    }
+}
+
+@keyframes crt-glow {
+    0% { opacity: 0.1; }
+    60% { opacity: 0.3; }
+}
+
 .reveal table {
     margin-bottom: 50px;
 }
@@ -6,22 +48,23 @@
     border-bottom: 2px solid;
 }
 
-@mixin scoreboard($colortop: white, $colormiddle: white, $colorbottom: white) {
-    .reveal h1, .reveal h2, .reveal h3 {
-        color: $colortop;
-    }
-    .scoreboard thead tr {
-        color: $colormiddle;
-    }
-    .scoreboard tbody tr {
-        color: $colorbottom;
-    }
+// Appel de la mixin Scoreboard et glow
+@include scoreboard(Invader, 'Arcade Interlaced', inherit, limegreen, orange, white);
+@include scoreboard(ArcadeKarmatic, 'Karmatic Arcade', 48px, yellow, red, white);
+@include scoreboard(DotMatrix, 'Dot Matrix', 54px, $colorDarkOrange, $colorOrange, $colorOrange);
+
+.clock {
+    position: absolute;
+    bottom: 0.1em;
+    right: 0.3em;
+    color: #17D4FE;
+    font-family: 'LCDMono2';
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    font-size: 2em;
+    animation: crt-output 10ms infinite;
+    text-shadow: 0rem 0.2rem 1rem lighten(#17D4FE,20%);
 }
 
-// Appel de la mixin
-.scoreboard-A {
-  @include scoreboard(limegreen, orange, white);
-}
-.scoreboard-B {
-  @include scoreboard(yellow, red, white);
-}
+

@@ -27,6 +27,8 @@ Reveal.addEventListener( 'slidechanged', function( event ) {
 } );
 
 
+clock('clock');
+
 function videoSlide(slide) {
     if (slide.attributes["data-video"] == undefined) return;
     if ( slide.youtubePlayer == undefined) {
@@ -63,10 +65,32 @@ function videoSlide(slide) {
 }
 
 function youtubeID(url){
-    var id = url;
+    let id = url;
     url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
     if(url[2] !== undefined) {
         id = url[2].split(/[^0-9a-z_\-]/i)[0];
     }
     return id;
+}
+
+
+function clock(classname){
+    let date = new Date();
+    let h = date.getHours(); // 0 - 23
+    let m = date.getMinutes(); // 0 - 59
+    let s = date.getSeconds(); // 0 - 59
+
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    // s = (s < 10) ? "0" + s : s;
+
+    let time = h + ":" + m;
+
+    let element = document.getElementsByClassName(classname)
+    Array.from(element).forEach(function(elt) {
+        elt.innerText = time
+        elt.textContent = time
+    })
+
+    setTimeout(clock, 1000, classname);
 }
