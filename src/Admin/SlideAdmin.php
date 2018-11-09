@@ -59,7 +59,7 @@ final class SlideAdmin extends AbstractAdmin
         $formMapper
             ->add('name')
             ->add('showtitle')
-            ->add('glow', 'choice', ['editable' => true])
+            ->add('glow')
             ->add('style', ChoiceType::class, [
                 'choices'  => array_flip(Slide::STYLES),
                 'expanded' => true,
