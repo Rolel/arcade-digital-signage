@@ -2,6 +2,7 @@
         data-autoslide="{{ hasSlide.duration * 1000 }}"
         data-state="slide-{{ slide.type }}"
         data-slideid="{{ slide.id }}"
+        class="{{ slide.style }}{{ slide.glow ? ' glow':'' }}"
 >
     {% if slide.showtitle %}
         <h1>{{ slide.name }}</h1>

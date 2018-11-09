@@ -9,6 +9,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Slide
 {
+    const STYLES = [
+        'slide-Invader' => 'Space Invader',
+        'slide-DotMatrix' => 'Dot Matrix (orange)',
+        'slide-ArcadeKarmatic' => 'Arcade - 3D',
+    ];
+
+    const TYPES = [
+        'top' => 'Top X',
+        'topbytype' => 'Top X By type',
+        'content' => 'Content',
+        'video' => 'Video',
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -65,6 +78,16 @@ class Slide
      * @ORM\ManyToOne(targetEntity="App\Entity\GameCategory")
      */
     private $gametype;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $glow;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $style;
 
     public function __toString(): string
     {
@@ -192,6 +215,30 @@ class Slide
     public function setGametype(?GameCategory $gametype): self
     {
         $this->gametype = $gametype;
+
+        return $this;
+    }
+
+    public function getGlow(): ?bool
+    {
+        return $this->glow;
+    }
+
+    public function setGlow(bool $glow): self
+    {
+        $this->glow = $glow;
+
+        return $this;
+    }
+
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
+    public function setStyle(string $style): self
+    {
+        $this->style = $style;
 
         return $this;
     }

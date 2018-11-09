@@ -2,6 +2,7 @@
 
 namespace App\Admin;
 
+use App\Entity\Slide;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -27,7 +28,11 @@ final class SlideAdmin extends AbstractAdmin
         $listMapper
             ->add('id')
             ->addIdentifier('name')
-            ->add('type')
+            ->add('type', 'choice', ['editable' => true, 'choices'  => Slide::TYPES])
+            ->add('glow', 'boolean', ['editable' => true,
+                'expanded' => true,
+                'multiple' => false])
+            ->add('style', 'choice', ['editable' => true, 'choices'  => Slide::STYLES])
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -41,12 +46,7 @@ final class SlideAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('type', ChoiceFieldMaskType::class, [
-                'choices' => [
-                    'Top X' => 'top',
-                    'Top X By type' => 'topbytype',
-                    'Content' => 'content',
-                    'Video' => 'video',
-                ],
+                'choices' => array_flip(Slide::TYPES),
                 'map' => [
                     'top' => ['autoscroll', 'count', 'direction', 'scoreboard'],
                     'topbytype' => ['autoscroll', 'count', 'direction', 'gametype'],
@@ -60,6 +60,12 @@ final class SlideAdmin extends AbstractAdmin
         $formMapper
             ->add('name')
             ->add('showtitle')
+            ->add('glow', 'choice', ['editable' => true])
+            ->add('style', ChoiceType::class, [
+                'choices'  => array_flip(Slide::STYLES),
+                'expanded' => true,
+                'multiple' => false,
+            ])
             ->add('count')
             ->add('direction', ChoiceType::class, [
                 'choices'  => [

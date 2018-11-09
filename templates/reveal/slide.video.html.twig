@@ -3,6 +3,7 @@
     data-state="slide-{{ slide.type }}"
     data-slideid="{{ slide.id }}"
     data-video="{{ slide.video }}"
+    class="{{ slide.style }}{{ slide.glow ? ' glow':'' }}"
     >
     {% if slide.showtitle %}
     <h1>{{ slide.name }}</h1>
