@@ -1,4 +1,28 @@
 @font-face {
+    font-family: 'LCDMono2';
+    src: url('LCDMono2Normal.woff2') format('woff2'),
+    url('LCDMono2Normal.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dot Matrix';
+    src: url('DotMatrixBold.woff2') format('woff2'),
+    url('DotMatrixBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karmatic Arcade';
+    src: url('KarmaticArcade.woff2') format('woff2'),
+    url('KarmaticArcade.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'Arcade Normal';
     src: url('ArcadeNormal.woff2') format('woff2'),
     url('ArcadeNormal.woff') format('woff');
@@ -10,6 +34,22 @@
     font-family: 'Arcade Interlaced';
     src: url('ArcadeInterlaced.woff2') format('woff2'),
     url('ArcadeInterlaced.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Dot Matrix';
+    src: url('DotMatrix.woff2') format('woff2'),
+    url('DotMatrix.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Arcade Rounded';
+    src: url('ArcadeRounded.woff2') format('woff2'),
+    url('ArcadeRounded.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
