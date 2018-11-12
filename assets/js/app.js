@@ -2,6 +2,8 @@ require('reveal.js/css/reveal.scss');
 require('../reveal-theme/arcade.scss');
 require('../css/app.scss');
 
+require('../img/arcade.png');
+
 import Reveal from 'reveal.js';
 import YouTubePlayer from 'youtube-player';
 
@@ -14,7 +16,7 @@ Reveal.initialize({
     loop: true,
     autoSlideStoppable: false,
     width: 1920,
-    height: 1080,
+    height: '100%',
     transition: 'convex',
 });
 
