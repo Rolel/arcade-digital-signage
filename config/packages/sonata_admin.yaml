@@ -3,7 +3,7 @@ sonata_admin:
     title_logo: build/images/arcade.png
     dashboard:
         blocks:
-            - { type: sonata.admin.block.admin_list, position: right }
+#            - { type: sonata.admin.block.admin_list, position: right }
             -
                 position: left
                 type: sonata.block.service.text
@@ -16,7 +16,7 @@ sonata_admin:
                 class:    col-lg-4 col-xs-4
                 position: top
                 type:     sonata.admin.block.stats
-                settings: { code: admin.screen, text: Screens, icon: fa-tv, color: bg-info }
+                settings: { code: admin.screen, text: Screens, icon: fa-tv, color: bg-warning }
             -
                 class:    col-lg-4 col-xs-4
                 position: top
@@ -31,12 +31,12 @@ sonata_admin:
                 class:    col-lg-6 col-xs-6
                 position: top
                 type:     sonata.admin.block.stats
-                settings: { code: admin.score, text: Score, icon: fa-star, color: bg-green }
+                settings: { code: admin.scoreboard, text: Score Board, icon: fa-list-ol, color: bg-teal }
             -
                 class:    col-lg-6 col-xs-6
                 position: top
                 type:     sonata.admin.block.stats
-                settings: { code: admin.scoreboard, text: Score Board, icon: fa-list-ol, color: bg-teal }
+                settings: { code: admin.score, text: Score, icon: fa-star, color: bg-green }
 
 
 sonata_block:
