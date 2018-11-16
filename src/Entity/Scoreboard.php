@@ -21,7 +21,7 @@ class Scoreboard
     ];
 
     const TYPES_FORMAT = [
-        10 => 'i:s',
+        10 => 'i\ms\s',
         11 => 's\s',
 
         20 => 'pts',

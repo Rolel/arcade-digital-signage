@@ -47,6 +47,9 @@ $colorOrange: #FF8C00;
 .reveal table td {
     border-bottom: 2px solid;
 }
+.reveal table td.score {
+    text-align: right
+}
 
 // Appel de la mixin Scoreboard et glow
 @include slide(Invader, 'Arcade Interlaced', inherit, limegreen, orange, white);
