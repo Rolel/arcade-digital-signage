@@ -15,7 +15,7 @@ Reveal.initialize({
     center: true,
     loop: true,
     autoSlideStoppable: false,
-    width: 1920,
+    width: '100%',
     height: '100%',
     transition: 'convex',
 });
@@ -100,7 +100,6 @@ function clock(classname){
 
 
 function scrollSlide(section) {
-
     let scrollable = section.querySelector('.scrollable')
     if (scrollable != null) {
         let slides = section.parentNode
@@ -114,27 +113,16 @@ function scrollSlide(section) {
         if (scrollViewportHeight < scrollableHeight) {
 
             let scrollLength = scrollableHeight - scrollViewportHeight
-            /*
-            let div = document.createElement('span')
-            let spacer = scrollable.insertBefore(div, scrollable.childNodes[0])
-
-            // The spacer height is equal to out of box part
-            spacer.classList.add('spacer')
-            spacer.style.height = scrollLength + 'px'
-*/
-            console.log(sectionHeight)
-            console.log(slidesHeight);
-            console.log(scrollableHeight);
-            console.log(scrollViewportHeight);
-            console.log(scrollLength);
-            console.log('#####');
             scrollable.childNodes[0].animate([
                 // keyframes
                 { transform: 'translateY(0px)' },
+                { transform: 'translateY(0px)' },
+                { transform: 'translateY(-' + scrollLength / 2 + 'px)' },
+                { transform: 'translateY(-' + scrollLength + 'px)' },
                 { transform: 'translateY(-' + scrollLength + 'px)' }
             ], {
                 // timing options
-                duration: 10000,
+                duration: parseInt(section.getAttribute('data-autoslide')) * 0.9,
                 iterations: 2,
                 easing: 'ease-in',
                 direction: 'alternate'

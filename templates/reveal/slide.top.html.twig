@@ -8,31 +8,33 @@
         <h1>{{ slide.name }}</h1>
         <!-- <h2>{{ slide.top.scoreboard.game.name }} - {{ slide.top.scoreboard.game.brand.name }}</h2> -->
     {% endif %}
-    <table class="scoreboard">
-        <thead>
-            <tr>
-                <th class="rank">Rank</th>
-                <th class="date">Date</th>
-                <th class="name">Name</th>
-                <th class="score">Score</th>
-            </tr>
-        </thead>
-        <tbody>
-        {%  set unit = constant('TYPES_FORMAT', slide.top.scoreboard)[slide.top.scoreboard.type] %}
-        {% set counter = 0 %}
-        {% for score in slide.top.scores %}
-            {% set counter = counter + 1 %}
-            <tr>
-                <td class="rank">{{ counter|localizednumber('ordinal') }}</td>
-                <td class="date">{{ score.date|date("d/m/Y") }}</td>
-                <td class="name">{{ score.playername }}</td>
-                {% if slide.top.scoreboard.type in range(10, 19) %}
-                    <td class="score">{{ score.value|date(unit) }}</td>
-                {% elseif slide.top.scoreboard.type in range(20, 29) %}
-                    <td class="score">{{ score.value }} {{ unit }}</td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="scrollable"><div>
+        <table class="scoreboard">
+            <thead>
+                <tr>
+                    <th class="rank">Rank</th>
+                    <th class="date">Date</th>
+                    <th class="name">Name</th>
+                    <th class="score">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+            {%  set unit = constant('TYPES_FORMAT', slide.top.scoreboard)[slide.top.scoreboard.type] %}
+            {% set counter = 0 %}
+            {% for score in slide.top.scores %}
+                {% set counter = counter + 1 %}
+                <tr>
+                    <td class="rank">{{ counter|localizednumber('ordinal') }}</td>
+                    <td class="date">{{ score.date|date("d/m/Y") }}</td>
+                    <td class="name">{{ score.playername }}</td>
+                    {% if slide.top.scoreboard.type in range(10, 19) %}
+                        <td class="score">{{ score.value|date(unit) }}</td>
+                    {% elseif slide.top.scoreboard.type in range(20, 29) %}
+                        <td class="score">{{ score.value }} {{ unit }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div></div>
 </section>
