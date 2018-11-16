@@ -31,6 +31,7 @@ final class ScreenAdmin extends AbstractAdmin
                     'show' => [],
                     'edit' => [],
                     'delete' => [],
+                    'viewfront' => [],
                 ],
             ]);
     }
