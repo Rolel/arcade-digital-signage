@@ -21,23 +21,23 @@ $colorOrange: #FF8C00;
         .slide-#{$className}.glow h1,
         .slide-#{$className}.glow h2,
         .slide-#{$className}.glow h3 {
-            animation: crt-output 10ms infinite;
+            // animation: crt-glow 16ms infinite;
             text-shadow: 0 0 0.8rem lighten($colorTop, 10%);
         }
         .slide-#{$className}.glow .scoreboard thead tr {
-            animation: crt-output 10ms infinite;
+            // animation: crt-glow 16ms infinite;
             text-shadow: 0 0 0.4rem lighten($colorMiddle, 10%);
         }
         .slide-#{$className}.glow .scoreboard tbody tr {
-            animation: crt-output 10ms infinite;
+            // animation: crt-glow 16ms infinite;
             text-shadow: 0 0 0.4rem lighten($colorBottom, 10%);
         }
     }
 }
 
 @keyframes crt-glow {
-    0% { opacity: 0.1; }
-    60% { opacity: 0.3; }
+    0% { opacity: 1; }
+    60% { opacity: 0.95; }
 }
 
 .reveal table {
@@ -67,4 +67,7 @@ $colorOrange: #FF8C00;
     text-shadow: 0 0 1rem lighten(#17D4FE,20%);
 }
 
+.scrollable {
+    overflow: hidden;
+}
 

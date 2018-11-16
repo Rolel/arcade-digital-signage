@@ -26,6 +26,7 @@ Reveal.addEventListener( 'ready', function( event ) {
 Reveal.addEventListener( 'slidechanged', function( event ) {
     // event.previousSlide, event.currentSlide, event.indexh, event.indexv
     videoSlide(event.currentSlide);
+    scrollSlide(event.currentSlide);
 } );
 
 
@@ -95,4 +96,49 @@ function clock(classname){
     })
 
     setTimeout(clock, 1000, classname);
+}
+
+
+function scrollSlide(section) {
+
+    let scrollable = section.querySelector('.scrollable')
+    if (scrollable != null) {
+        let slides = section.parentNode
+
+        let scrollableHeight = scrollable.clientHeight
+        let sectionHeight = section.clientHeight
+        let slidesHeight = slides.clientHeight
+        let fixedHeight = sectionHeight - scrollableHeight
+        let scrollViewportHeight = slidesHeight - fixedHeight
+
+        if (scrollViewportHeight < scrollableHeight) {
+
+            let scrollLength = scrollableHeight - scrollViewportHeight
+            /*
+            let div = document.createElement('span')
+            let spacer = scrollable.insertBefore(div, scrollable.childNodes[0])
+
+            // The spacer height is equal to out of box part
+            spacer.classList.add('spacer')
+            spacer.style.height = scrollLength + 'px'
+*/
+            console.log(sectionHeight)
+            console.log(slidesHeight);
+            console.log(scrollableHeight);
+            console.log(scrollViewportHeight);
+            console.log(scrollLength);
+            console.log('#####');
+            scrollable.childNodes[0].animate([
+                // keyframes
+                { transform: 'translateY(0px)' },
+                { transform: 'translateY(-' + scrollLength + 'px)' }
+            ], {
+                // timing options
+                duration: 10000,
+                iterations: 2,
+                easing: 'ease-in',
+                direction: 'alternate'
+            });
+        }
+    }
 }
