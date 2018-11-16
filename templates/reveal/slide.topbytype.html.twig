@@ -8,7 +8,9 @@
         <h1>{{ slide.name }}</h1>
     {% endif %}
 
+    <div class="scrollable">
     {% for top in slide.top %}
+        {%  set unit = constant('TYPES_FORMAT', top.scoreboard)[top.scoreboard.type] %}
         <h2>{{ top.scoreboard.game.name }} - {{ top.scoreboard.game.brand.name }}</h2>
         <table class="scoreboard">
             <thead>
@@ -25,12 +27,17 @@
                     {% set counter = counter + 1 %}
                     <tr>
                         <td class="rank">{{ counter|localizednumber('ordinal') }}</td>
-                        <td class="date">{{ score.date|date("d/m/Y") }}</td>
+                        <td class="date">{{ score.date|date('d/m/Y') }}</td>
                         <td class="name">{{ score.playername }}</td>
-                        <td class="score">{{ score.value }}</td>
+                        {% if top.scoreboard.type in range(10, 19) %}
+                            <td class="score">{{ score.value|date(unit) }}</td>
+                        {% elseif top.scoreboard.type in range(20, 29) %}
+                            <td class="score">{{ score.value }} {{ unit }}</td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% endfor %}
+    </div>
 </section>

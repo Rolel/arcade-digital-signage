@@ -20,9 +20,9 @@ class Scoreboard
         22 => 'Score (Money €)'
     ];
 
-    const TYPES_UNIT = [
-        10 => ['m','s'],
-        11 => 's',
+    const TYPES_FORMAT = [
+        10 => 'i:s',
+        11 => 's\s',
 
         20 => 'pts',
         21 => 'USD',
