@@ -4,11 +4,15 @@ require('../css/app.scss');
 
 require('../img/arcade.png');
 
+import backgroundImage from '../img/back/3.jpg';
 import Reveal from 'reveal.js';
 import YouTubePlayer from 'youtube-player';
 
 
 Reveal.initialize({
+    // Parallax background image
+    parallaxBackgroundImage: backgroundImage,
+    parallaxBackgroundSize: '3457px 1512px',
     controls: false,
     progress: false,
     history: true,
