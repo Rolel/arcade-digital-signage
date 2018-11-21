@@ -32,7 +32,7 @@
                         {% if top.scoreboard.type in range(10, 19) %}
                             <td class="score">{{ score.value|date(unit) }}</td>
                         {% elseif top.scoreboard.type in range(20, 29) %}
-                            <td class="score">{{ score.value }} {{ unit }}</td>
+                            <td class="score">{{ score.value|localizednumber('decimal', 'default', 'fr') }} {{ unit }}</td>
                         {% endif %}
                     </tr>
                 {% endfor %}

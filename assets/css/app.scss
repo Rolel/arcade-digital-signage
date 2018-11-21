@@ -48,7 +48,8 @@ $colorOrange: #FF8C00;
     border-bottom: 2px solid;
 }
 .reveal table td.score {
-    text-align: right
+    text-align: right;
+    word-spacing: -0.3em;
 }
 
 // Appel de la mixin Scoreboard et glow
