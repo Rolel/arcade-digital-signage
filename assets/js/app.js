@@ -19,8 +19,8 @@ Reveal.initialize({
     center: true,
     loop: true,
     autoSlideStoppable: false,
-    width: '100%',
-    height: '100%',
+    width: 1920,
+    height: 1080,
     transition: 'convex',
 });
 
