@@ -94,6 +94,7 @@ final class SlideAdmin extends AbstractAdmin
                 ],
                 'expanded' => true,
                 'multiple' => false,
+                'required' => false,
             ])
             ->add('content')
             ->add('scoreboard', ModelType::class, [

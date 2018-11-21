@@ -70,7 +70,7 @@ class Slide
     private $autoscroll;
 
     /**
-     * @ORM\Column(type="string", length=8)
+     * @ORM\Column(type="string", length=8, nullable=true)
      */
     private $direction;
 
