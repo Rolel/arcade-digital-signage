@@ -16,22 +16,22 @@ sonata_admin:
                 class:    col-lg-4 col-xs-4
                 position: top
                 type:     sonata.admin.block.stats
-                settings: { code: admin.screen, text: Screens, icon: fa-tv, color: bg-warning }
+                settings: { code: admin.screen, text: Screens, icon: fa-tv, color: bg-teal }
             -
                 class:    col-lg-4 col-xs-4
                 position: top
                 type:     sonata.admin.block.stats
-                settings: { code: admin.deck, text: Decks, icon: fa-stack-overflow , color: bg-info }
+                settings: { code: admin.deck, text: Decks, icon: fa-stack-overflow , color: bg-teal }
             -
                 class:    col-lg-4 col-xs-4
                 position: top
                 type:     sonata.admin.block.stats
-                settings: { code: admin.slide, text: Slides, icon: fa-square, color: bg-info }
+                settings: { code: admin.slide, text: Slides, icon: fa-square, color: bg-teal }
             -
                 class:    col-lg-6 col-xs-6
                 position: top
                 type:     sonata.admin.block.stats
-                settings: { code: admin.scoreboard, text: Score Board, icon: fa-list-ol, color: bg-teal }
+                settings: { code: admin.scoreboard, text: Score Board, icon: fa-list-ol, color: bg-green }
             -
                 class:    col-lg-6 col-xs-6
                 position: top
