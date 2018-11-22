@@ -7,7 +7,7 @@ require('../img/arcade.png');
 import backgroundImage from '../img/back/3.jpg';
 import Reveal from 'reveal.js';
 import YouTubePlayer from 'youtube-player';
-
+import Fitty from 'fitty';
 
 Reveal.initialize({
     // Parallax background image
@@ -31,6 +31,7 @@ Reveal.addEventListener( 'slidechanged', function( event ) {
     // event.previousSlide, event.currentSlide, event.indexh, event.indexv
     videoSlide(event.currentSlide);
     scrollSlide(event.currentSlide);
+    Fitty('.fitty');
 } );
 
 
