@@ -11,7 +11,7 @@
     <div class="scrollable"><div>
     {% for top in slide.top %}
         {%  set unit = constant('TYPES_FORMAT', top.scoreboard)[top.scoreboard.type] %}
-        <h2 class="fitty">{{ top.scoreboard.game.name }} - {{ top.scoreboard.game.brand.name }}</h2>
+        <h2>{{ top.scoreboard.game.name }} - {{ top.scoreboard.game.brand.name }}</h2>
         <table class="scoreboard">
             <thead>
                 <tr>
