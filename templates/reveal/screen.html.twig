@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ screen.name }}{% endblock %}
+
+{% block body %}
+    <div class="reveal">
+        <div class="slides">
+            {% for hasDeck in screen.screenHasDecks %}
+                {% for hasSlide in hasDeck.deck.deckHasSlides %}
+                    {% set slide = hasSlide.slide %}
+                    {% include 'reveal/slide.' ~ slide.type ~ '.html.twig' %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="clock"></div>
+{% endblock %}

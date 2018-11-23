@@ -1,16 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ screen.name }}{% endblock %}
+{% block title %}Welcome :){% endblock %}
 
 {% block body %}
     <div class="reveal">
         <div class="slides">
-            {% for hasDeck in screen.screenHasDecks %}
-                {% for hasSlide in hasDeck.deck.deckHasSlides %}
-                    {% set slide = hasSlide.slide %}
-                    {% include 'reveal/slide.' ~ slide.type ~ '.html.twig' %}
+            <section>
+            <ul>
+                {% for screen in screens %}
+                    <li>
+                        <a href="{{ path('reveal_screen', {'screenId': screen.id}) }}">{{ screen.name }}</a>
+                    </li>
                 {% endfor %}
-            {% endfor %}
+            </ul>
+            </section>
         </div>
     </div>
     <div class="clock"></div>

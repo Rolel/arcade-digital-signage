@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ScreenRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,9 +11,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class RevealController extends AbstractController
 {
     /**
+     * @Route("/", name="reveal_screenlist")
+     */
+    public function indexAction(ScreenRepository $screenRepository)
+    {
+        return $this->render('reveal/index.html.twig', [
+            'screens' => $screenRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/reveal/screen/{screenId}", name="reveal_screen")
      */
-    public function index(Request $request, EntityManagerInterface $em, int $screenId)
+    public function screenAction(Request $request, EntityManagerInterface $em, int $screenId)
     {
         $screen = $em->getRepository('App:Screen')->fetchFullTree($screenId);
 
@@ -55,7 +66,7 @@ class RevealController extends AbstractController
             }
         }
 
-        return $this->render('reveal/index.html.twig', [
+        return $this->render('reveal/screen.html.twig', [
             'screen' => $screen,
         ]);
     }
